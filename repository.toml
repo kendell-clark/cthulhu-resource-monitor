@@ -1,0 +1,6 @@
+format-version = 1
+id = "kendell-clark.cthulhu-resource-monitor"
+name = "Cthulhu Resource Monitor"
+description = "Resource monitoring tentacle for the Cthulhu screen reader."
+maintainer = "Kendell Clark"
+homepage = "https://github.com/kendell-clark/cthulhu-resource-monitor"

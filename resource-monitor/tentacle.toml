@@ -1,0 +1,21 @@
+format-version = 1
+id = "resource-monitor"
+name = "Resource Monitor"
+description = "Report Linux system resources with keyboard shortcuts and clipboard copying."
+version = "0.1.0"
+authors = ["Kendell Clark"]
+license = "GPL-3.0-or-later"
+runtime = "native"
+platforms = ["linux"]
+entry-point = ["bin/resource-monitor"]
+apis = ["commands", "presentation", "interaction"]
+capabilities = ["presentation", "interaction"]
+
+[protocol]
+major = 1
+minor = 0
+
+[requirements]
+reader = "Cthulhu with interactive Tentacle support"
+runtime = "Linux procfs"
+build = "Go 1.24 or newer and the adjacent cthulhu source checkout"

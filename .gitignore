@@ -1,0 +1,14 @@
+dist/
+resource-monitor/bin/
+*.before-packaging
+*.before-cgo
+*.before-release
+
+# Backup files
+*.backup
+*.backup-*
+*.backup_*
+*.bak
+*.bak.*
+*.before-*
+*~
