@@ -928,8 +928,10 @@ func systemSummaryReport() (string, error) {
 	}
 	cpuResult := make(chan string, 1)
 	netResult := make(chan measured, 1)
+	batteryResult := make(chan measured, 1)
 	go func() { cpuResult <- detailedCPUReport() }()
 	go func() { value, err := networkReport(); netResult <- measured{value, err} }()
+	go func() { value, err := cachedBatteryReport(); batteryResult <- measured{value, err} }()
 
 	if hostname, err := os.Hostname(); err == nil && hostname != "" {
 		parts = append(parts, "Hostname: "+hostname+".")
@@ -968,6 +970,9 @@ func systemSummaryReport() (string, error) {
 	if result := <-netResult; result.err == nil && result.text != "" {
 		parts = append(parts, result.text)
 	}
+	if result := <-batteryResult; result.err == nil && result.text != "" {
+		parts = append(parts, result.text)
+	}
 	if value, err := uptimeReport(); err == nil && value != "" {
 		parts = append(parts, value)
 	}
@@ -989,6 +994,15 @@ func main() {
 	monitor := &Monitor{}
 
 	commands := []tentacle.Command{
+		{
+			ID:           "battery",
+			Title:        "Battery Information",
+			Description:  "Report laptop and peripheral battery information; press twice to copy",
+			Presentation: true,
+			Interaction:  true,
+			Bindings:     bindings("Alt+Cthulhu+8"),
+			Handle:       monitor.handle("battery", cachedBatteryReport),
+		},
 
 		{
 			ID:           "summary",
