@@ -7,5 +7,5 @@ manifest = "resource-monitor/tentacle.toml"
 [[tentacles.releases]]
 platform = "linux"
 architecture = "amd64"
-url = "https://github.com/kendell-clark/cthulhu-resource-monitor/releases/download/resource-monitor-v0.1.1/resource-monitor-0.1.1-linux-amd64.tar.gz"
-sha256 = "00a6660aaacc01acaf50221e4227434b6e0d85d1e1be0134db828963fa95d961"
+url = "https://github.com/kendell-clark/cthulhu-resource-monitor/releases/download/resource-monitor-v0.1.2/resource-monitor-0.1.2-linux-amd64.tar.gz"
+sha256 = "790fb555907c574ac4869ae7d09ddce80c9c8814e7a0ab9b442d8ff66311955a"
