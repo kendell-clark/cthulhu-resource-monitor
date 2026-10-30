@@ -131,4 +131,17 @@ func batteryReportFrom(root string) (string, error) {
 	return strings.Join(result, " "), nil
 }
 
-func batteryReport() (string, error) { return batteryReportFrom(powerSupplyRoot) }
+func batteryReport() (string, error) {
+	base, err := batteryReportFrom(powerSupplyRoot)
+	if err != nil {
+		return "", err
+	}
+	extra := upowerAdditionalBatteries(powerSupplyRoot)
+	if len(extra) == 0 {
+		return base, nil
+	}
+	if base == "No battery information available." {
+		return strings.Join(extra, " "), nil
+	}
+	return base + " " + strings.Join(extra, " "), nil
+}
